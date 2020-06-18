@@ -19,7 +19,7 @@ int InputCheck(unsigned int tag, unsigned int m, unsigned int j)
 		return 1;
 	}
 
-	// Berechnungen für Tagesangabe:
+	// Berechnungen fuer Tagesangabe:
 		// Monate mit 30 Tage   
 		if ((m <= 7 && m % 2 == 0 && m!= 2) || (m < 7 && m % 2 != 0))
 		{
