@@ -34,71 +34,71 @@ int main(void)
 	printf("\tTaschenrechner:\n\n");
 
 	// Eingabe
-		// Eingabe 1: Ganzzahl
-		EingabeZahl1 = EingabeGanzzahl(1);
+	// Eingabe 1: Ganzzahl
+	EingabeZahl1 = EingabeGanzzahl(1);
 
-		while (EingabeOperator != 'q')
-		{
+	while (EingabeOperator != 'q')
+	{
 
-			// Eingabe 2: Operator
-			EingabeOperator = EingabeOperatorF();
-
-
-			switch (EingabeOperator) {
-			case '+':
-				// Eingabe 3: Ganzzahl
-				EingabeZahl2 = EingabeGanzzahl(2);
-				Ergebnis = Addition(EingabeZahl1, EingabeZahl2);
-
-				break;
-
-			case '-':
-				// Eingabe 3: Ganzzahl
-				EingabeZahl2 = EingabeGanzzahl(2);
-				Ergebnis = Subtraktion((float)EingabeZahl1, (float)EingabeZahl2);
-
-				break;
-
-			case '*':
-				// Eingabe 3: Ganzzahl
-				EingabeZahl2 = EingabeGanzzahl(2);
-				Ergebnis = Multiplikation((float)EingabeZahl1, (float)EingabeZahl2);
-
-				break;
-
-			case '/':
-				// Eingabe 3: Ganzzahl
-				EingabeZahl2 = EingabeGanzzahl(2);
-				Ergebnis = Division((float)EingabeZahl1, (float)EingabeZahl2);
-
-				break;
-
-			case '%':	// Modulo Berechnung ist nur fuer Ganzzahlen definiert
-				// Eingabe 3: Ganzzahl
-				EingabeZahl2 = EingabeGanzzahl(2);
-				Ergebnis = Modulo((int)EingabeZahl1, (int)EingabeZahl2);
-
-				break;
-
-			case 'q':
-				printf("\n\t Ergebnis: %.3f\n", Ergebnis);
-
-				return 1;
-
-			default:
-				printf("Fehlerhafte Eingabe des Operators!\n");
-
-				return 1;
-			}
+		// Eingabe 2: Operator
+		EingabeOperator = EingabeOperatorF();
 
 
-			// Ergebnis wird als EingabeZahl1 zwischengespeichert
-			EingabeZahl1 = Ergebnis;
-			printf("\nErgebnis: \t\t%.3f\n", Ergebnis);
+		switch (EingabeOperator) {
+		case '+':
+			// Eingabe 3: Ganzzahl
+			EingabeZahl2 = EingabeGanzzahl(2);
+			Ergebnis = Addition(EingabeZahl1, EingabeZahl2);
 
+			break;
 
+		case '-':
+			// Eingabe 3: Ganzzahl
+			EingabeZahl2 = EingabeGanzzahl(2);
+			Ergebnis = Subtraktion((float)EingabeZahl1, (float)EingabeZahl2);
+
+			break;
+
+		case '*':
+			// Eingabe 3: Ganzzahl
+			EingabeZahl2 = EingabeGanzzahl(2);
+			Ergebnis = Multiplikation((float)EingabeZahl1, (float)EingabeZahl2);
+
+			break;
+
+		case '/':
+			// Eingabe 3: Ganzzahl
+			EingabeZahl2 = EingabeGanzzahl(2);
+			Ergebnis = Division((float)EingabeZahl1, (float)EingabeZahl2);
+
+			break;
+
+		case '%':	// Modulo Berechnung ist nur fuer Ganzzahlen definiert
+			// Eingabe 3: Ganzzahl
+			EingabeZahl2 = EingabeGanzzahl(2);
+			Ergebnis = Modulo((int)EingabeZahl1, (int)EingabeZahl2);
+
+			break;
+
+		case 'q':
+			printf("\n\t Ergebnis: %.3f\n", Ergebnis);
+
+			return 1;
+
+		default:
+			printf("Fehlerhafte Eingabe des Operators!\n");
+
+			return 1;
 		}
 
 
-		return 0;
+		// Ergebnis wird als EingabeZahl1 zwischengespeichert
+		EingabeZahl1 = Ergebnis;
+		printf("\nErgebnis: \t\t%.3f\n", Ergebnis);
+
+
+	}
+
+
+return 0;
 }
