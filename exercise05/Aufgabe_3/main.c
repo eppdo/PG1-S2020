@@ -1,4 +1,4 @@
-// PG1 Uebungsblatt 5 - Aufgabe 3: Alternative Ausführungen und Schleifen
+// PG1 Uebungsblatt 5 - Aufgabe 3: Alternative AusfÃ¼hrungen und Schleifen
 #include <stdio.h>
 
 // function: Eingabe - Ganzzahl
@@ -27,10 +27,10 @@ int main(void)
 	float EingabeZahl1;
 	int EingabeZahl2;
 	char EingabeOperator = 'f';
-	float Ergebnis;
+	float Ergebnis = 0;
 
 
-	printf("PG1 Uebung 5 - Aufgabe 3: Alternative Ausführungen und Schleifen\n");
+	printf("PG1 Uebung 5 - Aufgabe 3: Alternative AusfÃ¼hrungen und Schleifen\n");
 	printf("\tTaschenrechner:\n\n");
 
 	// Eingabe
@@ -70,6 +70,7 @@ int main(void)
 				// Eingabe 3: Ganzzahl
 				EingabeZahl2 = EingabeGanzzahl(2);
 				Ergebnis = Division((float)EingabeZahl1, (float)EingabeZahl2);
+
 				break;
 
 			case '%':	// Modulo Berechnung ist nur fuer Ganzzahlen definiert
@@ -78,12 +79,15 @@ int main(void)
 				Ergebnis = Modulo((int)EingabeZahl1, (int)EingabeZahl2);
 
 				break;
+
 			case 'q':
 				printf("\n\t Ergebnis: %.3f\n", Ergebnis);
 
 				return 1;
+
 			default:
 				printf("Fehlerhafte Eingabe des Operators!\n");
+
 				return 1;
 			}
 
