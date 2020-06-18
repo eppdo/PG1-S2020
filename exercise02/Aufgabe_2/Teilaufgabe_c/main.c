@@ -1,53 +1,71 @@
-// PG1 Uebungsblatt 2 - Aufgabe 2 c)
-
 #include <stdio.h>
 
 int main()
 {
-	// Minuend:
-	int z3_1, z2_1, z1_1, z0_1;
-	// Subtrahent:
-	int z3_2, z2_2, z1_2, z0_2;
+	// Summand 1:
+	unsigned int z3_1, z2_1, z1_1, z0_1;
+	//Summand 2:
+	unsigned int z3_2, z2_2, z1_2, z0_2;
 	// Ergebnis:
 	int erg_z3, erg_z2, erg_z1, erg_z0;
-	// Hilfsvariable für Uebergang
-	int erg_z3h, erg_z2h, erg_z1h, erg_z0h;
+	// Hilfsvariable fuer Ueberschlag:
+	float h_var1, h_var2, h_var3;
+	unsigned int h_var1_i, h_var2_i, h_var3_i;
+	// Basis: 6
+	const unsigned int base6 = 6;
 
-	printf("Aufgabe 2 b) - Addition von Zahlen mit der Basis 6\n\t");
+
+	printf("Aufgabe 2 c) - Subtraktion von Zahlen mit der Basis 6\n\t");
 
 
 	// Initialisierung: Basis 6
-	z3_1 = 4;
-	z2_1 = 3;
+	z3_1 = 1;
+	z2_1 = 5;
 	z1_1 = 2;
-	z0_1 = 1;
+	z0_1 = 5;
 	printf("Minuend: \t%i%i%i%i\n\t", z3_1, z2_1, z1_1, z0_1);
 
 	z3_2 = 1;
-	z2_2 = 2;
-	z1_2 = 3;
-	z0_2 = 4;
+	z2_2 = 1;
+	z1_2 = 2;
+	z0_2 = 0;
 	printf("Subtrahent: \t%i%i%i%i\n\t", z3_2, z2_2, z1_2, z0_2);
 
 	// Addition
 
-		// Ziffer 0 mit Uebergang
-		//  erg = Differenz * boolscher Ausdruck -> boolscher Ausdruck fuer Ueberschlag (< 0) true
-	erg_z0 = (z0_1 - z0_2) * ((z0_1 - z0_2) >= 0) + (6 + z0_1 - z0_2) * ((z0_1 - z0_2) < 0);
-	erg_z0h = ((z0_1 - z0_2) < 0);
+		// Ziffer 0
+		//  Erklaerung: (Basis 6 + Differenz der Ziffern) modulo Basis 6
+	erg_z0 = (base6 + (z0_1 - z0_2)) % base6;
 
-	// Ziffer 1 mit Uebergang
-	erg_z1 = (z1_1 - (z1_2 + erg_z0h)) * ((z1_1 - (z1_2 + erg_z0h)) >= 0) + (6 + z1_1 - (z1_2 + erg_z0h)) * ((z1_1 - (z1_2 + erg_z0h)) < 0);
-	erg_z1h = ((z1_1 - z1_2) < 0);
 
-	// Ziffer 2 mit Uebergang
-	erg_z2 = (z2_1 - (z2_2 + erg_z1h)) * ((z2_1 - (z2_2 + erg_z1h)) >= 0) + (6 + z2_1 - (z2_2 + erg_z1h)) * ((z2_1 - (z2_2 + erg_z1h)) < 0);
-	erg_z2h = ((z2_1 - z2_2) < 0);
+	// Ziffer 1 mit Uebertrag:
+		// Hilfsvar. fuer Uebertrag: 
+		// h_var1_i > 6 fuer (z1 - z2) < 0 (also z2 > z1)
+	h_var1_i = base6 - (z0_1 - z0_2);
+	// h_var1_i > 6 -> Modulo Berechnung  = 6	-> Division mit Basis 6 = 1 (z1 < z2 -> Uebertrag) | = 0.xx (z1 > z2)
+	h_var1 = (base6 % (base6 - h_var1_i)) / base6;
 
-	// Ziffer 3 mit Uebergang
-	erg_z3 = (z3_1 - (z3_2 + erg_z2h)) * ((z3_1 - (z3_2 + erg_z2h)) >= 0) + (6 + z3_1 - (z3_2 + erg_z2h)) * ((z3_1 - (z3_2 + erg_z2h)) < 0);
+	// int(h_var1) -> Typumwandlung von float -> int: 0.xx wird 0	-> kein Uebergang
+	erg_z1 = (base6 + (z1_1 - (z1_2 + (int)h_var1))) % base6;
+
+
+	// Ziffer 2 mit Uebertrag:
+	h_var2_i = base6 - (z1_1 - z1_2);
+	h_var2 = (base6 % (base6 - h_var2_i)) / base6;
+
+	erg_z2 = (base6 + (z2_1 - (z2_2 + (int)h_var2))) % base6;
+
+
+	// Ziffer 3 mit Uebertrag:
+	h_var3_i = base6 - (z2_1 - z2_2);
+	h_var3 = (base6 % (base6 - h_var3_i)) / base6;
+
+	erg_z3 = (base6 + (z3_1 - (z3_2 + (int)h_var3))) % base6;
+
+
 
 	printf("Ergebnis: \t%i%i%i%i\n", erg_z3, erg_z2, erg_z1, erg_z0);
+
 
 	return(0);
 
