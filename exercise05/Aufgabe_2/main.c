@@ -35,7 +35,7 @@ int main(void)
 
         // Berechnung Steuersatz: Bei i == 0 -> (1%(i+1)) == 0, bei i >0 -> (1%(i+1)) == 1
         Steuersatz = Steuersatz + (1 % (i + 1)) * Stufensatz;
-        printf("Steuersatz: %.2f %%\t", Steuersatz);
+        //printf("Steuersatz: %.2f %%\t", Steuersatz);
 
         // Berechnung zu versteuerndes Einkommen
         VersteuerndesEinkommen = VersteuerndesEinkommen - (i == 0) * EinkommenSteuerfrei - (i != 0) * Stufenhoehe;
@@ -44,7 +44,7 @@ int main(void)
         if (Steuersatz >= MaxSteuersatz)
         {
             Steuern = Steuern + VersteuerndesEinkommen * Steuersatz / 100;                 
-            printf("Steuern: %.2f Euro\t", Steuern);
+            //printf("Steuern: %.2f Euro\t", Steuern);
             Steuern = Abrunden(Steuern, 2);
             break;
         }
@@ -66,7 +66,7 @@ int main(void)
 
 
         
-        printf("Steuern: %.2f Euro\t", Steuern);
+        //printf("Steuern: %.2f Euro\t", Steuern);
         Steuern = Abrunden(Steuern, 2);
     }
 
