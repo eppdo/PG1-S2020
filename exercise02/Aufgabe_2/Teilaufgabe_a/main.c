@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <math.h>
 
-int main(void) 
+int main(void)
 {
-// Aufgabe 2
-// a)
+	// Aufgabe 2
+	// a)
 	unsigned int z0, z1, z2, z3, erg_a_10, erg_a_10_add, erg_a_6;
 	float z3_6f, z2_6f, z1_6f, z0_6f;
 	unsigned int z3_6i, z2_6i, z1_6i, z0_6i;
@@ -25,21 +26,21 @@ int main(void)
 
 	// Berechnung von Basis 10 zu Basis 6:
 		// Erste Ziffer:
-		z3_6f = erg_a_10_add / pow(6, 3);
-		z3_6i = int(z3_6f);
+	z3_6f = erg_a_10_add / pow(6, 3);
+	z3_6i = (int)z3_6f;
 
-		// Zweite Ziffer:
-		z2_6f = (erg_a_10 - z3_6i * pow(6, 3)) / pow(6, 2);
-		z2_6i = int(z2_6f);
+	// Zweite Ziffer:
+	z2_6f = (erg_a_10 - z3_6i * pow(6, 3)) / pow(6, 2);
+	z2_6i = (int)z2_6f;
 
-		// Dritte Ziffer:
-		z1_6f = (erg_a_10_add - z3_6i * pow(6, 3) - z2_6i * pow(6, 2)) / pow(6, 1);
-		z1_6i = int(z1_6f);
+	// Dritte Ziffer:
+	z1_6f = (erg_a_10_add - z3_6i * pow(6, 3) - z2_6i * pow(6, 2)) / pow(6, 1);
+	z1_6i = (int)z1_6f;
 
-		// Vierte Ziffer
-		z0_6f = (erg_a_10_add - z3_6i * pow(6, 3) - z2_6i * pow(6, 2) - z1_6i * pow(6, 1)) / pow(6, 0);
-		z0_6i = int(z0_6f);
-		printf("Umgewandelt in Zahl Basis 6: \t%i%i%i%i", z3_6i, z2_6i, z1_6i, z0_6i);
+	// Vierte Ziffer
+	z0_6f = (erg_a_10_add - z3_6i * pow(6, 3) - z2_6i * pow(6, 2) - z1_6i * pow(6, 1)) / pow(6, 0);
+	z0_6i = (int)z0_6f;
+	printf("Umgewandelt in Zahl Basis 6: \t%i%i%i%i", z3_6i, z2_6i, z1_6i, z0_6i);
 
 
 

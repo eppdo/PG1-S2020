@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
 // Aufgabe 1
 // a)
     // i.
-        int x;
-        int erg_i;
+        double x;
+        double erg_i;
 
         // Initialisierung
         x = 5;
