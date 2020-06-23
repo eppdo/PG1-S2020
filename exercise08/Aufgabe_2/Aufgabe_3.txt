@@ -1,0 +1,31 @@
+PG1 Uebungsblatt 8 - Aufgabe 3:
+	Fragen zu Aufgabe 2 (Felder und Zeichenketten)
+
+a)
+Speicher:(Größen sind willkürlich festgelegt)
+
+	Vorname: 	30 char
+	Nachname: 	30 char
+	Strasse: 	30 char
+	Hausnr.: 	6 char
+	PLZ:		6 char
+	Stadt: 		30 char
+	
+	Summe:		132 char je Mitglied		(132 Byte	=	1.056 Bit)
+
+	Summe:		1320 char für 10 Mitglieder	(1320 Byte	=	10.560 Bit)
+
+
+Der Speicherbedarf ist nur abhängig von maximalen Anzahl der Mitglieder.
+Der Speicher wird nicht dynamisch während des Programmablaufs freigegeben.
+
+
+b) 
+Längstmögliche Adressdatensatz: 30 char
+-> Mehr als 30 Zeichen -> Buffer overflow -> undefiniertes Verhalten
+
+c)
+Wenn die maximale Anzahl an Mitgliedern erreicht ist, wird eine Fehlermeldung ausgegeben
+
+d)
+Ja
