@@ -7,6 +7,12 @@ Der Name des Hauptprogramms ist in den folgenden Lösungsvorschlägen immer main
 Alle weiteren Dateien sind benötigte Funktionen.  
 
 
+__Verwendete IDE:__
+Visual Studio 2019
+
+__Verwendeter Compiler:__
+Microsoft Visual C++-Compiler
+
 
 
 
