@@ -25,128 +25,145 @@ void FinalResult(short Winner, int PGRow, int PGCol);
 
 int main(void)
 {
-	char GameArray[Row][Col];				// Spielstandspeicher
-
-	_Bool GameEnd = 0;						// flag Spielende
+	char RepeatGame = '1';					// Wenn Spiel beendet wurde kann es erneut gestartet werden
 
 	const int Player1 = 1;					// Spieler 1 
 	const int Player2 = 2;					// Spieler 2
 
-	int RoundInt = 0;						// Rundenzaehler
+	char GameArray[Row][Col];				// Spielstandspeicher
 
-	short Winner = 0;							// Gewinner
-
-
-
-	// Header
-	printf("PG1 Uebungsblatt 9: Aufgabe 3 - Mehrdimensionale Felder - Vier - Gewinnt Spiel\n\n");
-	printf("Spieler 1:\tX\n");
-	printf("Spieler 2:\tO\n\n\n");
-
-	// GameArray fuellen
-	for (int i = 0; i < Row; i++)			// Zeile GameArray
+	while (RepeatGame == '1')
 	{
-		for (int j = 0; j < Col; j++)			// Spalte GameArray
+
+		_Bool GameEnd = 0;						// flag Spielende
+
+		int RoundInt = 0;						// Rundenzaehler
+
+		short Winner = 0;						// Gewinner
+
+
+		// Header
+		printf("PG1 Uebungsblatt 9: Aufgabe 3 - Mehrdimensionale Felder - Vier - Gewinnt Spiel\n\n");
+		printf("Spieler 1:\tX\n");
+		printf("Spieler 2:\tO\n\n\n");
+
+		// GameArray fuellen
+		for (int i = 0; i < Row; i++)			// Zeile GameArray
 		{
-			GameArray[i][j] = ' ';				// Fuellen mit Leerzeichen Charakter
+			for (int j = 0; j < Col; j++)			// Spalte GameArray
+			{
+				GameArray[i][j] = ' ';				// Fuellen mit Leerzeichen Charakter
+			}
 		}
-	}
-
-	// Spielfeld anzeigen
-	PrintPlayGround(Row, Col, GameArray);
-
-
-	while (GameEnd == 0)
-	{
-		// Zaehler fuer Spielrunde um +1 erhoehen
-		RoundInt++;
-
-		// Eingabe Spieler 1
-		PlayerInput(Row, Col, GameArray, Player1);
 
 		// Spielfeld anzeigen
 		PrintPlayGround(Row, Col, GameArray);
 
-		// Ueberpruefung 
-		if (RoundInt >= 4)
+
+		while (GameEnd == 0)
 		{
-			// Horizontal
-			if (CheckHor(GameArray, Row, Col, Player1) == 1)
+			// Zaehler fuer Spielrunde um +1 erhoehen
+			RoundInt++;
+
+			// Eingabe Spieler 1
+			PlayerInput(Row, Col, GameArray, Player1);
+
+			// Spielfeld anzeigen
+			PrintPlayGround(Row, Col, GameArray);
+
+			// Ueberpruefung 
+			if (RoundInt >= 4)
 			{
-				GameEnd = 1;
-				Winner = 1;
-				break;
+				// Horizontal
+				if (CheckHor(GameArray, Row, Col, Player1) == 1)
+				{
+					GameEnd = 1;
+					Winner = 1;
+					break;
+				}
+
+				// Vertikal
+				if (CheckVer(GameArray, Row, Col, Player1) == 1)
+				{
+					GameEnd = 1;
+					Winner = 1;
+					break;
+				}
+
+				// Diagonal
+				if (CheckDiag(GameArray, Row, Col, Player1) == 1)
+				{
+					GameEnd = 1;
+					Winner = 1;
+					break;
+				}
+
 			}
 
-			// Vertikal
-			if (CheckVer(GameArray, Row, Col, Player1) == 1)
+			// Eingabe Spieler 2
+			PlayerInput(Row, Col, GameArray, Player2);
+
+			// Spielfeld anzeigen
+			PrintPlayGround(Row, Col, GameArray);
+
+			// Ueberpruefung 
+			if (RoundInt >= 4)
 			{
-				GameEnd = 1;
-				Winner = 1;
-				break;
+				// Horizontal
+				if (CheckHor(GameArray, Row, Col, Player2) == 1)
+				{
+					GameEnd = 1;
+					Winner = 2;
+					break;
+				}
+
+				// Vertikal
+				if (CheckVer(GameArray, Row, Col, Player2) == 1)
+				{
+					GameEnd = 1;
+					Winner = 2;
+					break;
+				}
+
+				// Diagonal
+				if (CheckDiag(GameArray, Row, Col, Player2) == 1)
+				{
+					GameEnd = 1;
+					Winner = 2;
+					break;
+				}
+
 			}
 
-			// Diagonal
-			if (CheckDiag(GameArray, Row, Col, Player1) == 1)
+
+			// Spielfeld voll (2 * RoundInt -> 1 Spielrunde -> 2 Spieler -> 2 Steine)
+
+
+			if ((2 * RoundInt) >= (Row * Col))
 			{
 				GameEnd = 1;
-				Winner = 1;
-				break;
 			}
 
+
+		}	// while (GameEnd == 0)
+
+
+
+		// Ende - Spielstand
+		FinalResult(Winner, Row, Col);
+
+		// Erneut spielen
+		printf("\n\nErneut spielen?:\nJa -> 1\t\t|\tNein -> Sonstige Eingabe\n");
+		printf("Eingabe:\t");
+		if (scanf_s(" %c", &RepeatGame, sizeof(RepeatGame)) == 0)		// scanf_s == 0 bei ungueltiger Eingabe (z.B. mehr als 1 Zeichen)
+		{
+			break;
 		}
 
-		// Eingabe Spieler 2
-		PlayerInput(Row, Col, GameArray, Player2);
 
-		// Spielfeld anzeigen
-		PrintPlayGround(Row, Col, GameArray);
+	}	// while (RepeatGame == '1')
 
-		// Ueberpruefung 
-		if (RoundInt >= 4)
-		{
-			// Horizontal
-			if (CheckHor(GameArray, Row, Col, Player2) == 1)
-			{
-				GameEnd = 1;
-				Winner = 2;
-				break;
-			}
-
-			// Vertikal
-			if (CheckVer(GameArray, Row, Col, Player2) == 1)
-			{
-				GameEnd = 1;
-				Winner = 2;
-				break;
-			}
-
-			// Diagonal
-			if (CheckDiag(GameArray, Row, Col, Player2) == 1)
-			{
-				GameEnd = 1;
-				Winner = 2;
-				break;
-			}
-			
-		}
-
-		
-		// Spielfeld voll (2 * RoundInt -> 1 Spielrunde -> 2 Spieler -> 2 Steine)
-
-
-		if ((2 * RoundInt) >= (Row * Col))
-		{
-			GameEnd = 1;
-		}
-
-
-	}	// while (GameEnd == 0)
-
-
-
-	// Ende - Spielstand
-	FinalResult(Winner, Row, Col);
+	
 
 
 	return 0;
