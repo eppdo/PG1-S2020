@@ -114,7 +114,7 @@ int main(void)
 			}
 
 			// Vertikal
-			if (CheckVer(GameArray, Row, Col, Player1) == 1)
+			if (CheckVer(GameArray, Row, Col, Player2) == 1)
 			{
 				GameEnd = 1;
 				Winner = 2;
@@ -122,7 +122,7 @@ int main(void)
 			}
 
 			// Diagonal
-			if (CheckDiag(GameArray, Row, Col, Player1) == 1)
+			if (CheckDiag(GameArray, Row, Col, Player2) == 1)
 			{
 				GameEnd = 1;
 				Winner = 2;
