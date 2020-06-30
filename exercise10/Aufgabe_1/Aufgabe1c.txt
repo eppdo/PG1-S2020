@@ -1,0 +1,8 @@
+PG1 Uebungsblatt 10 - Aufgabe 1: Rekursion - Fibonacci-Zahlen
+
+c)
+Lösung aus Aufgabe 1 a), mit Rekursion, ist langsamer. 
+Der rekursive Aufruf der Funktion und der daraus folgende Speicherbedarf nimmt exponentiel zu, da
+sowohl Fib(n-2) und Fib(n-1) aufgerufen werden müssen.
+
+Dies ist bei n > 20 bereits deutlich merkbar.
