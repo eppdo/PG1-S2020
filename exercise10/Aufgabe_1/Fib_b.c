@@ -9,11 +9,11 @@ unsigned int Fib_b(unsigned int n)
 	switch (n)
 	{
 	case 0:
-		return 0;
+		f_n = 0;
 		break;
 
 	case 1:
-		return 1;
+		f_n = 1;
 		break;
 
 	default:
