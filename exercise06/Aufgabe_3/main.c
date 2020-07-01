@@ -14,7 +14,6 @@ int D6()
 }
 
 // function: Spielzug
-void RollDice(unsigned int* GameArray[9][7], int* Dice, char* NewRoll, int actPlayer, unsigned int maxDice);
 
 
 int main(void)
@@ -65,7 +64,6 @@ int main(void)
 
 
 	// Starte Spiel
-	for (int actPlayer = 0; actPlayer < in_NumPlayers; actPlayer++)
 	{
 		// Erster Spielzug
 		RollDice(GameArray, Dice, NewRoll, actPlayer, maxDice);
