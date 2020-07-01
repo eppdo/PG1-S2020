@@ -34,7 +34,6 @@ int main(void)
         unsigned int f_prev = f;
 
         // Berechnung f
-        f = f + (2 * i + 3)*100000000;
         f = f + (2 * i + 3);
 
             // Overflow Abfrage: Wenn der Vorherige Wert > aktuelle Wert -> overflow
