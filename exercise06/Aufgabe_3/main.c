@@ -14,6 +14,7 @@ int D6()
 }
 
 // function: Spielzug
+void RollDice(unsigned int* GameArray[9][7], int* Dice, char* NewRoll, int curPlayer, unsigned int maxDice);
 
 
 int main(void)
@@ -64,9 +65,10 @@ int main(void)
 
 
 	// Starte Spiel
+	for (int curPlayer = 0; curPlayer < in_NumPlayers; curPlayer++)
 	{
 		// Erster Spielzug
-		RollDice(GameArray, Dice, NewRoll, actPlayer, maxDice);
+		RollDice(GameArray, Dice, NewRoll, curPlayer, maxDice);
 
 		// Erneuter Spielzug
 		for (int Turn = 1; Turn <= 2; Turn++)
@@ -77,18 +79,18 @@ int main(void)
 			// Auswah l mit welchen Wuerfel neu gewuerfelt werden soll
 			for (int idxRoll = 0; idxRoll < 5; idxRoll++)
 			{
-				printf("Wuerfel %d (%d P.): ", idxRoll + 1, GameArray[actPlayer][idxRoll + 1]);
+				printf("Wuerfel %d (%d P.): ", idxRoll + 1, GameArray[curPlayer][idxRoll + 1]);
 				scanf_s(" %c", &NewRoll[idxRoll], 2);
 			}
 
 			// Erneut würfeln:
-			RollDice(GameArray, Dice, NewRoll, actPlayer, maxDice);
+			RollDice(GameArray, Dice, NewRoll, curPlayer, maxDice);
 		}
 
 
 		// Anzeige Endergebnis
 		printf("\n---------------------------------------------------------------\n");
-		printf("\tEndergebnis Spieler %d: %d Punkte", GameArray[actPlayer][0], GameArray[actPlayer][6]);
+		printf("\tEndergebnis Spieler %d: %d Punkte", GameArray[curPlayer][0], GameArray[curPlayer][6]);
 		printf("\n---------------------------------------------------------------\n");
 
 
@@ -116,30 +118,30 @@ int main(void)
 	};
 
 
-	unsigned int actMinPoints = 0;		// Maximal hoechste Wuerfelsumme		
-	unsigned int actSortPlayer;						// Aktuell zu sortierender Spieler
+	unsigned int curMinPoints = 0;		// Maximal hoechste Wuerfelsumme		
+	unsigned int curSortPlayer;						// Aktuell zu sortierender Spieler
 
 	for (int indexSort = 0; indexSort < in_NumPlayers; indexSort++)				// Schleife zum Befuellen von WinnerArray		
 	{
 
-		for (int actPlayer = 0; actPlayer < in_NumPlayers; actPlayer++)			// Schleife zum Finden der Werte im GameArray
+		for (int curPlayer = 0; curPlayer < in_NumPlayers; curPlayer++)			// Schleife zum Finden der Werte im GameArray
 		{
-			if (GameArray[actPlayer][6] >= actMinPoints)
+			if (GameArray[curPlayer][6] >= curMinPoints)
 			{
 				// Speichern Platzierung des Spielers
-				WinnerArray[indexSort][1] = GameArray[actPlayer][0];
+				WinnerArray[indexSort][1] = GameArray[curPlayer][0];
 				// Speichern Punkte des Spielers
-				WinnerArray[indexSort][2] = GameArray[actPlayer][6];
+				WinnerArray[indexSort][2] = GameArray[curPlayer][6];
 
-				actMinPoints = GameArray[actPlayer][6];
-				actSortPlayer = GameArray[actPlayer][0];
+				curMinPoints = GameArray[curPlayer][6];
+				curSortPlayer = GameArray[curPlayer][0];
 			}
 		}
 
 		// Ueberschreiben der hoechsten Werten im GameArray
-		GameArray[actSortPlayer - 1][6] = 0;
-		// Zuruecksetzen von actMinPoints
-		actMinPoints = 0;
+		GameArray[curSortPlayer - 1][6] = 0;
+		// Zuruecksetzen von curMinPoints
+		curMinPoints = 0;
 	}
 
 
@@ -149,9 +151,9 @@ int main(void)
 	printf("\n_______________________________________________________________\n");
 
 	printf("\nRangliste:\n\n");
-	for (int actPlayer = 0; actPlayer < in_NumPlayers; actPlayer++)
+	for (int curPlayer = 0; curPlayer < in_NumPlayers; curPlayer++)
 	{
-		printf("\t %d. Platz:\tSpieler %d\tPunkte: %d\n", WinnerArray[actPlayer][0], WinnerArray[actPlayer][1], WinnerArray[actPlayer][2]);
+		printf("\t %d. Platz:\tSpieler %d\tPunkte: %d\n", WinnerArray[curPlayer][0], WinnerArray[curPlayer][1], WinnerArray[curPlayer][2]);
 
 	}
 
