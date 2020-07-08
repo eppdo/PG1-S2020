@@ -1,7 +1,8 @@
+#include <stdio.h>
+
 void sort(int* intArray, int idx)
 {
 
-	printf("%x\n", &intArray);
 	int memoryInt = 0;			// Zwischenspeicher
 	int abbortInt = 0;			// Abbruchkriterium
 

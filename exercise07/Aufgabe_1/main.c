@@ -44,6 +44,8 @@ int main(void)
 
 	int ArrayMin = 0;
 	_Bool flagFirstRun = 1;
+	int ArrayMin = 0x7FFFFFFF;
+	//_Bool flagFirstRun = 1;
 	int ArrayMax = 0;
 	float ArrayMean = 0;
 
@@ -58,9 +60,12 @@ int main(void)
 
 		// Minimum finden
 		if (intArray[ArrayIdx] < ArrayMin || flagFirstRun == 1)
+		/*if (intArray[ArrayIdx] < ArrayMin || flagFirstRun == 1)*/
+		if (intArray[ArrayIdx] < ArrayMin)
 		{
 			ArrayMin = intArray[ArrayIdx];
 			flagFirstRun = 0;
+			//flagFirstRun = 0;
 		}
 
 		// Summe aller Werte
