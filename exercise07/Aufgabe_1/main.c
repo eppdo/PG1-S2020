@@ -42,8 +42,6 @@ int main(void)
 	printf("\nTeilaufgabe a)\n");
 
 
-	int ArrayMin = 0;
-	_Bool flagFirstRun = 1;
 	int ArrayMin = 0x7FFFFFFF;
 	//_Bool flagFirstRun = 1;
 	int ArrayMax = 0;
@@ -59,12 +57,10 @@ int main(void)
 
 
 		// Minimum finden
-		if (intArray[ArrayIdx] < ArrayMin || flagFirstRun == 1)
 		/*if (intArray[ArrayIdx] < ArrayMin || flagFirstRun == 1)*/
 		if (intArray[ArrayIdx] < ArrayMin)
 		{
 			ArrayMin = intArray[ArrayIdx];
-			flagFirstRun = 0;
 			//flagFirstRun = 0;
 		}
 
@@ -93,7 +89,6 @@ int main(void)
 
 
 	// Soertierung des Arrays
-	printf("\n%x\n", &intArray);
 	sort(intArray, idx);
 
 
