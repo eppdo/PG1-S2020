@@ -6,7 +6,7 @@ _Bool CheckDiag(char GameArray[][7], int PGRow, int PGCol, int Player)
 	char PlayerChar;
 	int CounterR = 0;			// Zaehlt die diagonalen gleichen Spielsteine (rechts)
 	int CounterL = 0;			// Zaehlt die diagonalen gleichen  Spielsteine (links)
-	const WinElements = 4;		// Anzahl der notwendigen Elemente zum gewinnen
+	const int WinElements = 4;		// Anzahl der notwendigen Elemente zum gewinnen
 
 	int direction = 1;			// direction = 1 -> Diagonale nach rechts | direction = -1 -> Diagonale nach links
 	

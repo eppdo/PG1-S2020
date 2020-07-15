@@ -2,7 +2,7 @@ _Bool CheckHor(char GameArray[][7], int PGRow, int PGCol, int Player)
 {
 	char PlayerChar;
 	int Counter = 0;			// Zaehlt die nebeneinanderliegenden Spielsteine
-	const WinElements = 4;		// Anzahl der notwendigen Elemente zum gewinnen
+	const int WinElements = 4;		// Anzahl der notwendigen Elemente zum gewinnen
 
 	// Zuweisung Spieler Symbol
 	switch (Player)
