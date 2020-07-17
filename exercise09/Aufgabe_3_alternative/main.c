@@ -70,13 +70,8 @@ int main(void)
 			// Spielfeld anzeigen
 			PrintPlayGround(Row, Col, GameArray);
 
-			//// Ueberpruefung 
-			//if (Turn >= 6)		// Es befinden sich min 4 gleiche Spielsteine auf dem Spielfeld
-			//{
-
-				GameEnd = Checker(GameArray, Row, Col, Player, LastInput);										
-
-			//}
+			// Ueberpruefung ob die Gewinnbedung erreicht wird
+			GameEnd = Checker(GameArray, Row, Col, Player, LastInput);										
 
 			// Zaehler fuer Spielrunde um +1 erhoehen
 			Turn++;
