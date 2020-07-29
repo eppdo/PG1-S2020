@@ -1,5 +1,19 @@
 #include <stdio.h>
-#include <math.h>
+
+int power(int a, int exp)
+{
+	int out = 1;
+
+	if (exp != 0)
+	{
+		for (int i = 1; i <= exp; i++)
+		{
+			out = out * a;
+		}
+	}
+
+	return out;
+}
 
 int HexToDec(char x)
 {
@@ -34,7 +48,7 @@ int func(char* str)
 
 	for (int i = strlen -1; i >= 2; i--)
 	{
-		out = out + HexToDec(*(str + i))* pow(16, exponent++);
+		out = out + HexToDec(*(str + i))* power(16, exponent++);
 	}
 
 	return out;
