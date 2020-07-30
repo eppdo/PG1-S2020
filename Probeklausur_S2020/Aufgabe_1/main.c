@@ -8,7 +8,6 @@ void func(int x)
 	printf("\nOriginal\tregister: %x\n", Reg_SSeg);
 
 	// disable register: En -> 1
-	Reg_SSeg = (Reg_SSeg << 1) >> 1;			// En == 0
 	Reg_SSeg = Reg_SSeg | 0x8000;				// En == 1		0x8000	=	1000 0000 000 000
 	printf("En==1\t\tregister: %x\n", Reg_SSeg);
 
