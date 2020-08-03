@@ -22,7 +22,7 @@ void func(int x)
 		Reg_SSeg = Reg_SSeg | 0x0006;							// 0x0006	=	0000 0000 0000 0110
 		break;
 	case 2:
-		Reg_SSeg = Reg_SSeg | 0x006D;							// 0x006D	=	0000 0000 0110 1110
+		Reg_SSeg = Reg_SSeg | 0x006D;							// 0x006D	=	0000 0000 0110 1101
 		break;
 	case 3:
 		Reg_SSeg = Reg_SSeg | 0x004F;							// 0x004F	=	0000 0000 0100 1111
