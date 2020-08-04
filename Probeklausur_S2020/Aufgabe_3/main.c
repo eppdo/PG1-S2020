@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-int power(int a, int exp)
+int power(int a, int exp)		// Funktionsweise entspricht "pow"-Funktion aus math.h
 {
-	int out = 1;
+	int out = 1;		// Vorbelegung mit Wert 1, falls der Exponent == 0
 
 	if (exp != 0)
 	{
 		for (int i = 1; i <= exp; i++)
 		{
-			out = out * a;
+			out *= a;		// out *= a		==		out = out * a
 		}
 	}
 
@@ -31,24 +31,30 @@ int HexToDec(char x)
 }
 
 
+
 int func(char* str)
 {
-	int out = 0;
-	int strlen = 0;
+	int out = 0;			//	Rueckgabewert
+	int strlen = 0;			//	Laenge des Strings
 
+	// Laenge des Eingabestrings ermitteln
 	for (int i = 0; i < 11; i++)
 	{
-		strlen = i;
-
-		if (*(str + i) == '\0')
+		if (*(str + i) == '\0')			// '\0' ist immer letztes Zeichen in string
 			break;
+
+		strlen = i;
 	}
 
 	int exponent = 0;
 
-	for (int i = strlen -1; i >= 2; i--)
+	for (int i = strlen; i >= 2; i--)
 	{
-		out = out + HexToDec(*(str + i))* power(16, exponent++);
+		//	out == Rueckgabewert	
+		//	+=	Addition mit vorherigen Wert: x += 10	==	x = x + 10;
+		//	HexToDec == Funktion fuer die Umrechnung von Hex.Zahlen zu Dezimalzahlen
+		//	power == Nachimplementierung von "pow"-funktion aus math.h
+		out += HexToDec(*(str + i))* power(16, exponent++);
 	}
 
 	return out;
