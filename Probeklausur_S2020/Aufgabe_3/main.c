@@ -34,7 +34,7 @@ int HexToDec(char x)
 
 int func(char* str)
 {
-	int out = 0;			//	Rueckgabewert
+	unsigned int out = 0;			//	Rueckgabewert
 	int strlen = 0;			//	Laenge des Strings
 
 	// Laenge des Eingabestrings ermitteln
@@ -72,9 +72,9 @@ int main(void)
 	printf("Eingabe: ");
 	scanf_s("%s", &inp, sizeof(inp));
 
-	int Dec = func(inp);
+	unsigned int Dec = func(inp);
 
-	printf("Hex:\t%s\tDec:\t%d\n", inp, Dec);
+	printf("Hex:\t%s\tDec:\t%ud\n", inp, Dec);
 
 
 	return 0;
