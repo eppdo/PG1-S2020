@@ -1,20 +1,6 @@
 #include <stdio.h>
 
-int power(int a, int exp)		// Funktionsweise entspricht "pow"-Funktion aus math.h
-{
-	int out = 1;		// Vorbelegung mit Wert 1, falls der Exponent == 0
-
-	if (exp != 0)
-	{
-		for (int i = 1; i <= exp; i++)
-		{
-			out *= a;		// out *= a		==		out = out * a
-		}
-	}
-
-	return out;
-}
-
+// Funktion: Umrechnung con Hex. auf Dezimalzahlen
 int HexToDec(char x)
 {
 	int out = 0;
@@ -23,6 +9,8 @@ int HexToDec(char x)
 		out = x - 0x30;
 	else if (x >= 0x41 && x <= 0x5A)		//	ANSI: 0x41 == 'A'		0x5A == 'Z'
 		out = x - 0x41 + 10;
+
+	// Wird nicht benoetigt: Angabe gibt vor, dass keine Kleinbuchstaben verwendet werden
 	else									// ANSI: 0x61 == 'a'		0x7A =='z'
 		out = x - 0x61 + 10;
 
@@ -31,11 +19,10 @@ int HexToDec(char x)
 }
 
 
-
 int func(char* str)
 {
 	unsigned int out = 0;			//	Rueckgabewert
-	int strlen = 0;			//	Laenge des Strings
+	int strlen = 0;					//	Laenge des Strings
 
 	// Laenge des Eingabestrings ermitteln
 	for (int i = 0; i < 11; i++)
@@ -48,13 +35,16 @@ int func(char* str)
 
 	int exponent = 0;
 
-	for (int i = strlen; i >= 2; i--)
+
+	for (int i = 2; i <= strlen; i++)
 	{
 		//	out == Rueckgabewert	
 		//	+=	Addition mit vorherigen Wert: x += 10	==	x = x + 10;
 		//	HexToDec == Funktion fuer die Umrechnung von Hex.Zahlen zu Dezimalzahlen
-		//	power == Nachimplementierung von "pow"-funktion aus math.h
-		out += HexToDec(*(str + i))* power(16, exponent++);
+		//	<< ((strlen - i) * 4)	== Bitshift um 4*x	
+		//	Bitshit << 4	==	* 16^x		x == Potenz
+		//	Bsp.:	0xF23	->	15*16^2 + 2*16^1 + 2*16^0
+		out += HexToDec(*(str + i)) << ((strlen - i) * 4);
 	}
 
 	return out;
@@ -67,14 +57,14 @@ int main(void)
 	printf("Felder und Strings:\n");
 
 	// Eingabe 
-	char inp[11] = {0};
+	char inp[11] = { 0 };
 
 	printf("Eingabe: ");
 	scanf_s("%s", &inp, sizeof(inp));
 
 	unsigned int Dec = func(inp);
 
-	printf("Hex:\t%s\tDec:\t%ud\n", inp, Dec);
+	printf("Hex:\t%s\tDec:\t%u\n", inp, Dec);
 
 
 	return 0;
